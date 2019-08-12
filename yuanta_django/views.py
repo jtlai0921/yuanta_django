@@ -24,3 +24,13 @@ def hello_template_name(request, name):
     dict = {'name': name}
     return render(request, 'hello_name.html', dict)
 
+def hello_template_users(request):
+    dict = {}
+    users = [
+        {'name': 'vincent', 'age': 30},
+        {'name': 'anita', 'age': 28},
+        {'name': 'howard', 'age': 15},
+        {'name': 'joanna', 'age': 10}
+    ]
+    dict['users'] = users
+    return render(request, 'hello_users.html', dict)
