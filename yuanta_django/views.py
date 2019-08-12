@@ -35,3 +35,18 @@ def hello_template_users(request):
     dict['users'] = users
     dict['amount'] = len(users)
     return render(request, 'hello_users.html', dict)
+
+
+def hello_template_users2(request):
+    users = [
+        {'name': 'vincent', 'age': 30},
+        {'name': 'anita', 'age': 28},
+        {'name': 'howard', 'age': 15},
+        {'name': 'joanna', 'age': 10}
+    ]
+    amount = len(users)
+    title = '我的成員'
+    nodata = '沒有資料'
+    copyright = '版權所有 @2019'
+
+    return render(request, 'hello_users2.html', locals())

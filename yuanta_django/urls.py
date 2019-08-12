@@ -14,5 +14,6 @@ urlpatterns = [
     path('hello/add_get/', views.add_get),
 
     path('hello_template/<str:name>', views.hello_template_name),
-    path('hello_template_users', views.hello_template_users),
+    path('hello_template_users/', views.hello_template_users),
+    path('hello_template_users2/', views.hello_template_users2),
 ]
