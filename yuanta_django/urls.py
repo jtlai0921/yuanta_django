@@ -11,10 +11,12 @@ def hello(request):
 def test(request):
     return render(request, 'test.html')
 
+def hello_name(request, name):
+    return HttpResponse("Hello " + name)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello/', hello),
-
-    path('test/', test)
+    path('test/', test),
+    path('hello/<str:name>', hello_name)
 ]
