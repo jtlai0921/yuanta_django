@@ -12,4 +12,6 @@ urlpatterns = [
     path('hello/add/<int:x>/<int:y>', views.hello_add),
     # /hello/add_get/?x=100&y=200
     path('hello/add_get/', views.add_get),
+
+    path('hello_template/<str:name>', views.hello_template_name),
 ]

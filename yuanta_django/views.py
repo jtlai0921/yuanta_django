@@ -19,3 +19,8 @@ def add_get(request):
     y = int(request.GET['y'])
     sum = x + y
     return HttpResponse("%d + %d = %d" % (x, y, sum))
+
+def hello_template_name(request, name):
+    dict = {'name': name}
+    return render(request, 'hello_name.html', dict)
+
