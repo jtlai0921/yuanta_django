@@ -10,4 +10,6 @@ urlpatterns = [
     path('test/', views.test),
     path('hello/<str:name>', views.hello_name),
     path('hello/add/<int:x>/<int:y>', views.hello_add),
+    # /hello/add_get/?x=100&y=200
+    path('hello/add_get/', views.add_get),
 ]
