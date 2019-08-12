@@ -1,10 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css">
     <meta charset="UTF-8">
     <title>hello_users</title>
 </head>
-<body>
-    {{ users }}
+<body style="padding: 15px">
+<table class="pure-table pure-table-bordered">
+    <thead>
+    <tr>
+        <th>name</th>
+        <th>age</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {%for user in users %}
+    <tr>
+        <td>{{ user.name }}</td>
+        <td>{{ user.age }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
 </body>
 </html>
