@@ -33,4 +33,5 @@ def hello_template_users(request):
         {'name': 'joanna', 'age': 10}
     ]
     dict['users'] = users
+
     return render(request, 'hello_users.html', dict)
