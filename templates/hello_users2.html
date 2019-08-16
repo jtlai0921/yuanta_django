@@ -1,36 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css">
-    <meta charset="UTF-8">
-    <title>{{ title }}</title>
-</head>
-<body style="padding: 15px">
-<form>
-    {{ amount }} 筆
-</form>
-<table class="pure-table pure-table-bordered">
-    <thead>
-    <tr>
-        <th>name</th>
-        <th>age</th>
-    </tr>
-    </thead>
+{% extends 'base.html' %}
 
-    <tbody>
-    {% for user in users %}
-        <tr>
-            <td>{{ user.name }}</td>
-            <td>{{ user.age }}</td>
-        </tr>
-    {% empty %}
-        <tr>
-            <td colspan="2">{{ nodata }}</td>
-        </tr>
-    {% endfor %}
-    </tbody>
+{% block title %}
+    {{ title }}
+{% endblock %}
 
-</table>
-{{ copyright }}
-</body>
-</html>
+{% block pagetitle %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    <form>
+        {{ amount }} 筆
+    </form>
+    <table class="pure-table pure-table-bordered">
+        <thead>
+        <tr>
+            <th>name</th>
+            <th>age</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.name }}</td>
+                <td>{{ user.age }}</td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="2">{{ nodata }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+    {{ copyright }}
+{% endblock %}
