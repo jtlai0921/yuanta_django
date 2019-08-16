@@ -8,7 +8,23 @@
     Http method form
 {% endblock %}
 
+{% block js %}
+    <script>
+        var xhttp = new XMLHttpRequest();
+        function js_get() {
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(this.responseText);
+                }
+            };
+            xhttp.open("GET", "/http_method_result/", true);
+            xhttp.send();
+        }
+    </script>
+{% endblock %}
+
 {% block content %}
+
     <form class="pure-form" method="get" action="/http_method_result/">
         <fieldset>
             <legend>Http method form (Get)</legend>
@@ -22,6 +38,17 @@
             <legend>Http method form (Post)</legend>
             <input type="text" placeholder="請輸入文字" name="text">
             <button type="submit" class="pure-button pure-button-primary">Post</button>
+        </fieldset>
+    </form>
+    <form class="pure-form">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Http method form (Ajax)</legend>
+            <input type="text" placeholder="請輸入文字" id="text" name="text">
+            <button type="button" class="pure-button pure-button-primary" onclick="js_get()">JS Get</button>
+            <button type="button" class="pure-button pure-button-primary" onclick="js_post()">JS Post</button>
+            <button type="button" class="pure-button pure-button-primary">JQ Get</button>
+            <button type="button" class="pure-button pure-button-primary">JQ Post</button>
         </fieldset>
     </form>
 {% endblock %}
