@@ -16,4 +16,8 @@ urlpatterns = [
     path('hello_template/<str:name>', views.hello_template_name),
     path('hello_template_users/', views.hello_template_users),
     path('hello_template_users2/', views.hello_template_users2),
+
+    path('http_method_form/', views.http_method_form),
+    path('http_method_result/', views.http_method_result),
+
 ]

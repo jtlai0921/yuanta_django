@@ -50,3 +50,11 @@ def hello_template_users2(request):
     copyright = '版權所有 @2019'
 
     return render(request, 'hello_users2.html', locals())
+
+
+def http_method_form(request):
+    return render(request, 'http_method_form.html')
+
+
+def http_method_result(request):
+    return HttpResponse('http_method_result')
