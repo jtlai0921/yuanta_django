@@ -14,7 +14,9 @@
         function js_get() {
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
-                    console.log(this.responseText);
+                    var res = this.responseText;
+                    console.log(res);
+                    document.getElementById("result").innerText = res;
                 }
             };
             xhttp.open("GET", "/http_method_result/", true);
@@ -51,4 +53,5 @@
             <button type="button" class="pure-button pure-button-primary">JQ Post</button>
         </fieldset>
     </form>
+    <div id="result"></div>
 {% endblock %}
