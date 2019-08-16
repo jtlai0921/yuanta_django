@@ -1,3 +1,5 @@
+import time
+
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
@@ -63,5 +65,7 @@ def http_method_result(request):
     # 取得 headers
     for key in request.META:
         print(key, '=', request.META.get(key, ''))
+
+    # time.sleep(5)
     return HttpResponse('http_method_result, method:' + request.method)
 

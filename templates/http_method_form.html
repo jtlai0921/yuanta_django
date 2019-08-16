@@ -38,14 +38,14 @@
 
 {% block content %}
 
-    <form class="pure-form" method="get" action="/http_method_result/">
+    <form class="pure-form" method="get" action="/http_method_result/" target="my_iframe">
         <fieldset>
             <legend>Http method form (Get)</legend>
             <input type="text" placeholder="請輸入文字" name="text">
             <button type="submit" class="pure-button pure-button-primary">Get</button>
         </fieldset>
     </form>
-    <form class="pure-form" method="post" action="/http_method_result/">
+    <form class="pure-form" method="post" action="/http_method_result/" target="my_iframe">
         {% csrf_token %}
         <fieldset>
             <legend>Http method form (Post)</legend>
@@ -53,6 +53,8 @@
             <button type="submit" class="pure-button pure-button-primary">Post</button>
         </fieldset>
     </form>
+    <iframe name="my_iframe" frameborder="0" height="30"></iframe>
+    <hr>
     <form class="pure-form">
         {% csrf_token %}
         <fieldset>
