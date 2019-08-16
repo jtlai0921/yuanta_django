@@ -11,11 +11,17 @@
 {% block content %}
     <form class="pure-form" method="get" action="/http_method_result/">
         <fieldset>
-            <legend>Http method form</legend>
-
+            <legend>Http method form (Get)</legend>
             <input type="text" placeholder="請輸入文字" name="text">
-
             <button type="submit" class="pure-button pure-button-primary">Get</button>
+        </fieldset>
+    </form>
+    <form class="pure-form" method="post" action="/http_method_result/">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Http method form (Post)</legend>
+            <input type="text" placeholder="請輸入文字" name="text">
+            <button type="submit" class="pure-button pure-button-primary">Post</button>
         </fieldset>
     </form>
 {% endblock %}

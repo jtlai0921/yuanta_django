@@ -1,5 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
+
 
 def hello(request):
     return HttpResponse("Hello Django")
@@ -55,6 +57,6 @@ def hello_template_users2(request):
 def http_method_form(request):
     return render(request, 'http_method_form.html')
 
-
+@csrf_exempt  # csrf 豁免
 def http_method_result(request):
     return HttpResponse('http_method_result')
