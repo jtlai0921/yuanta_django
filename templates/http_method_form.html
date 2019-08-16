@@ -22,6 +22,17 @@
             xhttp.open("GET", "/http_method_result/", true);
             xhttp.send();
         }
+        function js_post() {
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var res = this.responseText;
+                    console.log(res);
+                    document.getElementById("result").innerText = res;
+                }
+            };
+            xhttp.open("POST", "/http_method_result/", true);
+            xhttp.send();
+        }
     </script>
 {% endblock %}
 
