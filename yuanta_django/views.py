@@ -57,6 +57,11 @@ def hello_template_users2(request):
 def http_method_form(request):
     return render(request, 'http_method_form.html')
 
+
 @csrf_exempt  # csrf 豁免
 def http_method_result(request):
-    return HttpResponse('http_method_result')
+    # 取得 headers
+    for key in request.META:
+        print(key, '=', request.META.get(key, ''))
+    return HttpResponse('http_method_result, method:' + request.method)
+
