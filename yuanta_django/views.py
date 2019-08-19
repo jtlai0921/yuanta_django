@@ -88,5 +88,9 @@ def hello_poll_form(request):
 
 
 def hello_poll_result(request):
-    response = render(request, 'hello_poll_result.html')
+    body = QueryDict(request.body)
+    votes = body.getlist('vote')
+    print(votes)
+    print(votes[0])
+    response = render(request, 'hello_poll_result.html', locals())
     return response
