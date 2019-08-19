@@ -63,11 +63,15 @@ def http_method_form(request):
 #@csrf_exempt  # csrf 豁免
 def http_method_result(request):
     # 取得 headers
-    for key in request.META:
-        print(key, '=', request.META.get(key, ''))
+    #for key in request.META:
+    #    print(key, '=', request.META.get(key, ''))
+    # 觀察 body
+    print(request.body)
     text = ''
     if request.method == 'GET':
         text = request.GET.get('text', '')
+    elif request.method == 'POST':
+        text = request.POST.get('text', '')
 
 
     # time.sleep(5)
