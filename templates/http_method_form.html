@@ -35,6 +35,7 @@
 
             xhttp.open("POST", "/http_method_result/", true);
             var text = document.getElementById("text").value;
+            //var params = "csrfmiddlewaretoken={{ csrf_token }}&text=" + text;
             var params = "text=" + text;
             xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
             xhttp.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
@@ -74,6 +75,28 @@
         }
 
     </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#get_button").click(function () {
+                $.ajax({
+                    url: '/http_method_result/',
+                    type: 'GET',  // PUT, DELETE ??
+                    data: $('#my_form').serialize(),
+                    success: function (data, status) {
+                        console.log("Data: " + data + "\nStatus: " + status);
+                        $('#result').text(data);
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log(jqXHR);
+                    }
+                });
+            });
+        });
+    </script>
+
 {% endblock %}
 
 {% block content %}
@@ -95,7 +118,7 @@
     </form>
     <iframe name="my_iframe" frameborder="0" height="30"></iframe>
     <hr>
-    <form class="pure-form">
+    <form class="pure-form" id="my_form">
         {% csrf_token %}
         <fieldset>
             <legend>Http method form (Ajax)</legend>
@@ -104,7 +127,8 @@
             <button type="button" class="pure-button pure-button-primary" onclick="js_post()">JS Post</button>
             <button type="button" class="pure-button pure-button-primary" onclick="js_put()">JS Put</button>
             <button type="button" class="pure-button pure-button-primary" onclick="js_delete()">JS Delete</button>
-
+            <p/>
+            <button type="button" class="pure-button pure-button-primary" id="get_button">jQuery Get</button>
         </fieldset>
     </form>
     <div id="result"></div>
