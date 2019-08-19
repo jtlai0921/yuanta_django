@@ -30,9 +30,14 @@
                     document.getElementById("result").innerText = res;
                 }
             };
+
             xhttp.open("POST", "/http_method_result/", true);
+            xhttp.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+
             xhttp.send();
+
         }
+
     </script>
 {% endblock %}
 
@@ -64,7 +69,9 @@
             <button type="button" class="pure-button pure-button-primary" onclick="js_post()">JS Post</button>
             <button type="button" class="pure-button pure-button-primary">JQ Get</button>
             <button type="button" class="pure-button pure-button-primary">JQ Post</button>
+
         </fieldset>
     </form>
     <div id="result"></div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br>
 {% endblock %}

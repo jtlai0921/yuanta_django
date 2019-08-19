@@ -1,6 +1,6 @@
 import time
 
-from django.http import HttpResponse
+from django.http import HttpResponse, QueryDict
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
@@ -60,7 +60,7 @@ def http_method_form(request):
     return render(request, 'http_method_form.html')
 
 
-@csrf_exempt  # csrf 豁免
+#@csrf_exempt  # csrf 豁免
 def http_method_result(request):
     # 取得 headers
     for key in request.META:
