@@ -39,7 +39,38 @@
             xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
             xhttp.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
             xhttp.send(params);
+        }
+        function js_put() {
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var res = this.responseText;
+                    console.log(res);
+                    document.getElementById("result").innerText = res;
+                }
+            };
 
+            xhttp.open("PUT", "/http_method_result/", true);
+            var text = document.getElementById("text").value;
+            var params = "text=" + text;
+            xhttp.setRequestHeader('Content-type', 'multipart/form-data');
+            xhttp.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+            xhttp.send(params);
+        }
+        function js_delete() {
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var res = this.responseText;
+                    console.log(res);
+                    document.getElementById("result").innerText = res;
+                }
+            };
+
+            xhttp.open("DELETE", "/http_method_result/", true);
+            var text = document.getElementById("text").value;
+            var params = "text=" + text;
+            xhttp.setRequestHeader('Content-type', 'multipart/form-data');
+            xhttp.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+            xhttp.send(params);
         }
 
     </script>
@@ -71,8 +102,8 @@
             <input type="text" placeholder="請輸入文字" id="text" name="text">
             <button type="button" class="pure-button pure-button-primary" onclick="js_get()">JS Get</button>
             <button type="button" class="pure-button pure-button-primary" onclick="js_post()">JS Post</button>
-            <button type="button" class="pure-button pure-button-primary">JQ Get</button>
-            <button type="button" class="pure-button pure-button-primary">JQ Post</button>
+            <button type="button" class="pure-button pure-button-primary" onclick="js_put()">JS Put</button>
+            <button type="button" class="pure-button pure-button-primary" onclick="js_delete()">JS Delete</button>
 
         </fieldset>
     </form>

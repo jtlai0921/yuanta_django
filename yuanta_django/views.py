@@ -72,8 +72,12 @@ def http_method_result(request):
         text = request.GET.get('text', '')
     elif request.method == 'POST':
         text = request.POST.get('text', '')
-
-
+    elif request.method == 'PUT':
+        body = QueryDict(request.body)
+        text = body.get('text')
+    elif request.method == 'DELETE':
+        body = QueryDict(request.body)
+        text = body.get('text')
     # time.sleep(5)
     return HttpResponse('http_method_result, method:' + request.method + ', text:' + text)
 
