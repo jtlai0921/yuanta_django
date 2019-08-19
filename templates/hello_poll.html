@@ -13,7 +13,7 @@
 {% endblock %}
 
 {% block content %}
-    <form class="pure-form" method="post" action="/hello_poll_result/">
+    <form class="pure-form" method="post" action="/hello_poll_result/" target="my_frame">
         {% csrf_token %}
         <fieldset>
         <legend>Hello Poll</legend>
@@ -25,5 +25,6 @@
 
         <button type="submit" class="pure-button pure-button-primary">看結果</button>
     </fieldset>
+    <iframe name="my_frame" width="800" height="800" frameborder="0"></iframe>
 </form>
 {% endblock %}

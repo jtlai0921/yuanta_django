@@ -90,6 +90,10 @@ def hello_poll_form(request):
 def hello_poll_result(request):
     body = QueryDict(request.body)
     votes = body.getlist('vote')
+    v1 = votes[0]
+    v2 = votes[1]
+    v3 = votes[2]
+    v4 = votes[3]
     print(votes)
     print(votes[0])
     response = render(request, 'hello_poll_result.html', locals())
