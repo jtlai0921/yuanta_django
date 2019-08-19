@@ -65,7 +65,11 @@ def http_method_result(request):
     # 取得 headers
     for key in request.META:
         print(key, '=', request.META.get(key, ''))
+    text = ''
+    if request.method == 'GET':
+        text = request.GET.get('text', '')
+
 
     # time.sleep(5)
-    return HttpResponse('http_method_result, method:' + request.method)
+    return HttpResponse('http_method_result, method:' + request.method + ', text:' + text)
 

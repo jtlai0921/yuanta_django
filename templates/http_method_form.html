@@ -19,7 +19,9 @@
                     document.getElementById("result").innerText = res;
                 }
             };
-            xhttp.open("GET", "/http_method_result/", true);
+            var text = document.getElementById("text").value;
+            var params = "?text=" + text;
+            xhttp.open("GET", "/http_method_result/" + params, true);
             xhttp.send();
         }
         function js_post() {
