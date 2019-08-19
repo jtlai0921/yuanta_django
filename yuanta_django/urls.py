@@ -20,4 +20,7 @@ urlpatterns = [
     path('http_method_form/', views.http_method_form),
     path('http_method_result/', views.http_method_result),
 
+    path('hello_poll_form/', views.hello_poll_form),
+    path('hello_poll_result/', views.hello_poll_result),
+
 ]

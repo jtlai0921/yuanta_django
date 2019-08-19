@@ -81,3 +81,12 @@ def http_method_result(request):
     # time.sleep(5)
     return HttpResponse('http_method_result, method:' + request.method + ', text:' + text)
 
+
+def hello_poll_form(request):
+    response = render(request, 'hello_poll.html')
+    return response
+
+
+def hello_poll_result(request):
+    response = render(request, 'hello_poll_result.html')
+    return response
