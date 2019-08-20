@@ -91,16 +91,9 @@ def hello_poll_result(request):
     body = QueryDict(request.body)
     votes = body.getlist('vote')
     list = []
-    list.append({'蔡先生': votes[0]})
-    list.append({'韓小姐': votes[1]})
-    list.append({'郭小姐': votes[2]})
-    list.append({'林先生': votes[3]})
-    v1 = votes[0]
-    v2 = votes[1]
-    v3 = votes[2]
-    v4 = votes[3]
-
-    print(votes)
-    print(votes[0])
+    list.append({'name': '蔡先生', 'vote': votes[0]})
+    list.append({'name': '韓小姐', 'vote': votes[1]})
+    list.append({'name': '郭小姐', 'vote': votes[2]})
+    list.append({'name': '林先生', 'vote': votes[3]})
     response = render(request, 'hello_poll_result.html', locals())
     return response

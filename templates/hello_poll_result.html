@@ -17,11 +17,11 @@
       function drawChart() {
 
         var data = google.visualization.arrayToDataTable([
-          ['person', 'vote'],
-          ['蔡先生', {{ v1 }}],
-          ['韓小姐', {{ v2 }}],
-          ['郭小姐', {{ v3 }}],
-          ['林先生', {{ v4 }}],
+            ['person', 'vote'],
+            {% for value in list %}
+                ['{{value.name}}', {{ value.vote }}],
+
+            {% endfor %}
         ]);
 
         var options = {
@@ -36,5 +36,6 @@
 {% endblock %}
 
 {% block content %}
+    {{ list }}
     <div id="piechart" style="width: 900px; height: 500px;"></div>
 {% endblock %}
