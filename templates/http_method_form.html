@@ -80,10 +80,15 @@
 
     <script>
         $(document).ready(function () {
-            $("#get_button").click(function () {
+            $("#jquery_button").click(function () {
+                $.ajaxSetup({
+                    headers:{
+                        'X-CSRFToken':'{{ csrf_token }}'
+                    }
+                });
                 $.ajax({
                     url: '/http_method_result/',
-                    type: 'GET',  // PUT, DELETE ??
+                    type: 'PUT',  // GET, POST, PUT, DELETE
                     data: $('#my_form').serialize(),
                     success: function (data, status) {
                         console.log("Data: " + data + "\nStatus: " + status);
@@ -128,7 +133,7 @@
             <button type="button" class="pure-button pure-button-primary" onclick="js_put()">JS Put</button>
             <button type="button" class="pure-button pure-button-primary" onclick="js_delete()">JS Delete</button>
             <p/>
-            <button type="button" class="pure-button pure-button-primary" id="get_button">jQuery Get</button>
+            <button type="button" class="pure-button pure-button-primary" id="jquery_button">jQuery Access</button>
         </fieldset>
     </form>
     <div id="result"></div>
