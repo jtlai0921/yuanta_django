@@ -20,7 +20,6 @@
             ['person', 'vote'],
             {% for value in list %}
                 ['{{value.name}}', {{ value.vote }}],
-
             {% endfor %}
         ]);
 

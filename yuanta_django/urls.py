@@ -23,4 +23,6 @@ urlpatterns = [
     path('hello_poll_form/', views.hello_poll_form),
     path('hello_poll_result/', views.hello_poll_result),
 
+    path('hello_rating/', views.hello_rating),
+    path('hello_rating_result/', views.hello_rating_result),
 ]

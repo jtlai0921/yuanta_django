@@ -97,3 +97,12 @@ def hello_poll_result(request):
     list.append({'name': '林先生', 'vote': votes[3]})
     response = render(request, 'hello_poll_result.html', locals())
     return response
+
+
+def hello_rating(request):
+    return render(request, 'hello_rating.html')
+
+
+def hello_rating_result(request):
+    return HttpResponse('ok')
+
