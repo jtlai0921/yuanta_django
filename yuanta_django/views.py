@@ -3,7 +3,8 @@ import time
 from captcha.helpers import captcha_image_url
 from captcha.models import CaptchaStore
 from django.contrib import auth
-from django.http import HttpResponse, QueryDict
+from django.contrib.auth.models import User
+from django.http import HttpResponse, QueryDict, JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
@@ -173,3 +174,20 @@ def user_crud_form(request):
         return render(request, 'user_crud_form.html')
     else:
         return HttpResponse('尚未登入')
+
+
+# 瀏覽使用者資料並轉成 Json 格式輸出
+def users(request):
+    user_list = []
+    if request.user.is_authenticated:
+        users = User.objects.all()
+        for user in users:
+            user_dict = {}
+            user_dict['username'] = user.username
+            user_dict['email'] = user.email
+            user_dict['password'] = user.password
+            user_list.append(user_dict)
+
+    # JsonResponse 預設傳遞 dict
+    # 要傳遞任何其他 JSON 可序列化對象，例如：list[]，必須將safe參數設置為False。
+    return JsonResponse(user_list, safe=False)

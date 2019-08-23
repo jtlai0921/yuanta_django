@@ -36,6 +36,7 @@ urlpatterns = [
     path('user_logout/', views.user_logout),
     # 資料維護 CRUD 頁面
     path('user_crud_form/', views.user_crud_form),
-
+    # GET 查詢 User
+    path('users/', views.users),
 
 ]
