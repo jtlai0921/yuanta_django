@@ -1,5 +1,7 @@
 import time
 
+from captcha.helpers import captcha_image_url
+from captcha.models import CaptchaStore
 from django.http import HttpResponse, QueryDict
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
@@ -106,3 +108,16 @@ def hello_rating(request):
 def hello_rating_result(request):
     return HttpResponse('ok')
 
+
+def user_login_form(request):
+    # 取得 Cookies
+    # 略 ...
+
+    # 圖片驗證碼
+    # hashkey 驗證碼生成的祕鑰
+    hashkey = CaptchaStore.generate_key()
+    # image_url驗證碼的圖片地址
+    image_url = captcha_image_url(hashkey)
+
+    response = render(request, 'user_login_form.html', locals())
+    return response

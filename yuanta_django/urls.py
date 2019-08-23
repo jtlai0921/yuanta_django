@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.urls import path
+from django.urls import path, include
 import yuanta_django.views as views
 
 urlpatterns = [
@@ -25,4 +25,11 @@ urlpatterns = [
 
     path('hello_rating/', views.hello_rating),
     path('hello_rating_result/', views.hello_rating_result),
+
+    # captcha 圖片路徑
+    path('captcha/', include('captcha.urls')),
+    # 登入頁面 path
+    path('user_login_form/', views.user_login_form),
+
+
 ]
