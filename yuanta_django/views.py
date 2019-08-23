@@ -6,6 +6,8 @@ from django.http import HttpResponse, QueryDict
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
+from yuanta_django.utils import CaptchaCheck
+
 
 def hello(request):
     return HttpResponse("Hello Django")
@@ -121,3 +123,17 @@ def user_login_form(request):
 
     response = render(request, 'user_login_form.html', locals())
     return response
+
+
+def user_login(request):
+    username = request.POST.get('username', '')
+    password = request.POST.get('password', '')
+
+    # 取得驗證碼
+    captchaCheck = CaptchaCheck(request.POST)
+
+    # 驗證驗證碼
+    if captchaCheck.is_valid():
+        return HttpResponse("驗證碼 pass !")
+    else:
+        return HttpResponse("驗證碼 error !")

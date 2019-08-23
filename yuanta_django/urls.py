@@ -30,6 +30,8 @@ urlpatterns = [
     path('captcha/', include('captcha.urls')),
     # 登入頁面 path
     path('user_login_form/', views.user_login_form),
+    # 登入驗證
+    path('user_login/', views.user_login),
 
 
 ]

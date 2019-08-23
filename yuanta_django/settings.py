@@ -140,10 +140,10 @@ CAPTCHA_IMAGE_SIZE = (100, 50)
 CAPTCHA_BACKGROUND_COLOR = '#eeeeee'  #驗證碼背景色
 CAPTCHA_FOREGROUND_COLOR = '#000000'  #驗證碼字体颜色
 # 圖片中的文字為隨機英文字母，如 mdsh
-CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.random_char_challenge'
-CAPTCHA_LENGTH = 4  # 字符個數
+#CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.random_char_challenge'
+#CAPTCHA_LENGTH = 4  # 字符個數
 # 圖片中的文字為字典上的字
 #CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.word_challenge'
 # 圖片中的文字為數字表示式，如2+2=
-#CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.math_challenge'
+CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.math_challenge'
 CAPTCHA_TIMEOUT = 1  # 超時(分鐘)
