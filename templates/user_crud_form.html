@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}User 資料維護{% endblock %}
+{% block pagetitle %}Hello {{ user }}{% endblock %}
+{% block js %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // 字串格式化
+            String.format = function () {
+                var s = arguments[0];
+                for (var i = 0; i < arguments.length - 1; i++) {
+                    var reg = new RegExp("\\{" + i + "\\}", "gm");
+                    s = s.replace(reg, arguments[i + 1]);
+                }
+                return s;
+            }
+        });
+    </script>
+{% endblock %}
+{% block content %}
+    <form id="my_form" class="pure-form">
+        {% csrf_token %}
+        <fieldset>
+            <legend>User 資料維護</legend>
+            <input type="text" placeholder="Username" id="username" name="username" value="">
+            <p/>
+            <input type="email" placeholder="Email" id="email" name="email" value="">
+            <p/>
+            <input type="password" placeholder="Password" id="password" name="password" value="">
+            <p/>
+            <button type="button" class="pure-button pure-button-primary" id="create_button">Create</button>
+            <button type="button" class="pure-button pure-button-primary" id="update_button">Update</button>
+            <button type="button" class="pure-button pure-button-primary" id="delete_button">Delete</button>
+            <button type="button" class="pure-button pure-button-primary" onclick="location.href='/user_logout/'">
+                Logout
+            </button>
+        </fieldset>
+    </form>
+    <table id="my_table" class="pure-table pure-table-bordered">
+        <thead>
+        <tr>
+            <th>username</th>
+            <th>email</th>
+            <th>password</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        </tbody>
+    </table>
+
+{% endblock %}
