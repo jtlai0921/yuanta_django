@@ -14,6 +14,24 @@
                 }
                 return s;
             }
+
+            // 查詢所有使用者
+            var queryUsers = function () {
+                $.getJSON("/users", function (data) {
+                    $("table tbody").empty();
+                    $.each(data, function (i, item) {
+                        var username = data[i].username;
+                        var email = data[i].email;
+                        var password = data[i].password;
+                        markup = String.format('<tr><td>{0}</td><td>{1}</td><td>{2}</td></tr>', username, email, password);
+                        $("table tbody").append(markup);
+                    });
+                });
+            };
+
+            // init
+            queryUsers();
+
         });
     </script>
 {% endblock %}
