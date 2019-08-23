@@ -114,7 +114,9 @@ def hello_rating_result(request):
 
 def user_login_form(request):
     # 取得 Cookies
-    # 略 ...
+    username = request.COOKIES['username'] if 'username' in request.COOKIES else ''
+    password = request.COOKIES['password'] if 'password' in request.COOKIES else ''
+    remember = request.COOKIES['remember'] if 'remember' in request.COOKIES else ''
 
     # 圖片驗證碼
     # hashkey 驗證碼生成的祕鑰
@@ -142,7 +144,16 @@ def user_login(request):
             auth.login(request, user)
             response = HttpResponse("Login success: " + str(user))
             # 存入 Cookies
-            # 略 ...
+            remember = request.POST.get('remember', False)
+            if remember:  # 存入 cookie
+                response.set_cookie('username', username)
+                response.set_cookie('password', password)
+                response.set_cookie('remember', 'checked')
+            else:  # 清除 cookie
+                response.delete_cookie('username')
+                response.delete_cookie('password')
+                response.delete_cookie('remember')
+
             return response
         else:
             return HttpResponse("Login fail")
