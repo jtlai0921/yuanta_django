@@ -2,6 +2,7 @@ import time
 
 from captcha.helpers import captcha_image_url
 from captcha.models import CaptchaStore
+from django.contrib import auth
 from django.http import HttpResponse, QueryDict
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
@@ -134,6 +135,17 @@ def user_login(request):
 
     # 驗證驗證碼
     if captchaCheck.is_valid():
-        return HttpResponse("驗證碼 pass !")
+        # 驗證使用者帳密
+        user = auth.authenticate(username=username, password=password)
+        if user is not None and user.is_active:
+            # 進行登入, 存入 session 物件
+            auth.login(request, user)
+            response = HttpResponse("Login success: " + str(user))
+            # 存入 Cookies
+            # 略 ...
+            return response
+        else:
+            return HttpResponse("Login fail")
+
     else:
         return HttpResponse("驗證碼 error !")
