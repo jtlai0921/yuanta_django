@@ -32,6 +32,10 @@ urlpatterns = [
     path('user_login_form/', views.user_login_form),
     # 登入驗證
     path('user_login/', views.user_login),
+    # 登出
+    path('user_logout/', views.user_logout),
+    # 資料維護 CRUD 頁面
+    path('user_crud_form/', views.user_crud_form),
 
 
 ]

@@ -18,6 +18,28 @@
                     success: function (data, status) {
                         console.log(data);
                         $('#result').text(data);
+                        setTimeout(function () {
+                            location.href = '/user_crud_form/';
+                        }, 3000);
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log(jqXHR);
+                    }
+                });
+            });
+
+            $("#logout_button").click(function () {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    }
+                });
+                $.ajax({
+                    url: '/user_logout/',
+                    type: 'GET',  // GET, POST, PUT, DELETE
+                    success: function (data, status) {
+                        console.log(data);
+                        $('#result').text(data);
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         console.log(jqXHR);

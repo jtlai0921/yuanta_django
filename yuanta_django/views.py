@@ -149,3 +149,16 @@ def user_login(request):
 
     else:
         return HttpResponse("驗證碼 error !")
+
+
+def user_logout(request):
+    auth.logout(request)
+    return HttpResponse('User logout')
+
+
+def user_crud_form(request):
+    flag = request.user.is_authenticated
+    if flag:
+        return render(request, 'user_crud_form.html')
+    else:
+        return HttpResponse('尚未登入')
