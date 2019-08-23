@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}User 資料維護{% endblock %}
+{% block title %}Django 使用者資料維護{% endblock %}
 {% block pagetitle %}Hello {{ user }}{% endblock %}
 {% block js %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -21,7 +21,7 @@
     <form id="my_form" class="pure-form">
         {% csrf_token %}
         <fieldset>
-            <legend>User 資料維護</legend>
+            <legend>Django 使用者資料維護</legend>
             <input type="text" placeholder="Username" id="username" name="username" value="">
             <p/>
             <input type="email" placeholder="Email" id="email" name="email" value="">
