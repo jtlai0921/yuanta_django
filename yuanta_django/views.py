@@ -191,3 +191,66 @@ def users(request):
     # JsonResponse 預設傳遞 dict
     # 要傳遞任何其他 JSON 可序列化對象，例如：list[]，必須將safe參數設置為False。
     return JsonResponse(user_list, safe=False)
+
+# 建立使用者資料
+def create_user(request, username):
+    if request.method == 'POST':
+        email = request.POST.get('email', '')
+
+        password = request.POST.get('password', '')
+        user = User.objects.create_user(username, email, password)
+        user.is_staff = True
+
+        user.save()
+
+        response = HttpResponse('create_user ok')
+        return response
+    else:
+        response = HttpResponse('add error')
+        return response
+
+# 修改使用者資料
+def update_user(request, username):
+    if request.method == 'PUT':
+        body = QueryDict(request.body)
+        email = body.get('email')
+        password = body.get('password')
+
+        user = User.objects.get(username=username)
+        user.email = email
+        user.set_password(password)
+
+        user.save()
+
+        response = HttpResponse('update_user')
+        return response
+    else:
+        response = HttpResponse('update error')
+        return response
+
+
+# 刪除使用者資料
+def delete_user(request, username):
+    if request.method == 'DELETE':
+        user = User.objects.get(username=username)
+
+        user.delete()
+
+        response = HttpResponse('delete_user')
+        return response
+    else:
+        response = HttpResponse('delete error')
+        return response
+
+
+def rest_user(request, username):
+    if request.method == 'POST':  # 建立
+        return create_user(request, username)
+    elif request.method == 'PUT':  # 修改
+        return update_user(request, username)
+    elif request.method == 'DELETE':  # 刪除
+        return delete_user(request, username)
+    else:
+        response = HttpResponse('error')
+        return response
+

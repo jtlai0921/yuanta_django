@@ -38,5 +38,7 @@ urlpatterns = [
     path('user_crud_form/', views.user_crud_form),
     # GET 查詢 User
     path('users/', views.users),
+    # POST 建立 / PUT 修改 / DELETE 刪除 User (REST 風格)
+    path('user/<str:username>/', views.rest_user),
 
 ]
