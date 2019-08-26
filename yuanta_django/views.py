@@ -268,4 +268,4 @@ def music_crud_rest(request):
 
 
 def rest_sheetdb(request):
-    return render(request, 'rest_sheetdb.html.html')
+    return render(request, 'rest_sheetdb.html')
