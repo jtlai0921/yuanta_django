@@ -265,3 +265,7 @@ class MusicViewSet(viewsets.ModelViewSet):
 
 def music_crud_rest(request):
     return render(request, 'music_crud_rest.html')
+
+
+def rest_sheetdb(request):
+    return render(request, 'rest_sheetdb.html.html')

@@ -49,4 +49,6 @@ urlpatterns = [
     path('api/', include(router.urls)),
 
     path('music_crud_rest/', views.music_crud_rest),
+
+    path('rest_sheetdb/', views.rest_sheetdb),
 ]
