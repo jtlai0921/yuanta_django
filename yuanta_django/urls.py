@@ -47,4 +47,6 @@ urlpatterns = [
     path('user/<str:username>/', views.rest_user),
 
     path('api/', include(router.urls)),
+
+    path('music_crud_rest/', views.music_crud_rest),
 ]

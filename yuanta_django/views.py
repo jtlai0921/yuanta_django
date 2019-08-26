@@ -262,3 +262,5 @@ class MusicViewSet(viewsets.ModelViewSet):
     queryset = Music.objects.all()
     serializer_class = MusicSerializer
 
+def music_crud_rest(request):
+    return render(request, 'music_crud_rest.html')
