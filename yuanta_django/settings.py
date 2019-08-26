@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'yuanta_django',
     'captcha',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

@@ -7,7 +7,10 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse, QueryDict, JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework import viewsets
 
+from yuanta_django.models import Music
+from yuanta_django.serializers import MusicSerializer
 from yuanta_django.utils import CaptchaCheck
 
 
@@ -253,4 +256,9 @@ def rest_user(request, username):
     else:
         response = HttpResponse('error')
         return response
+
+
+class MusicViewSet(viewsets.ModelViewSet):
+    queryset = Music.objects.all()
+    serializer_class = MusicSerializer
 

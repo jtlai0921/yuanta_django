@@ -2,7 +2,12 @@ from django.contrib import admin
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+
 import yuanta_django.views as views
+
+router = DefaultRouter()
+router.register(r'music', views.MusicViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -41,4 +46,5 @@ urlpatterns = [
     # POST 建立 / PUT 修改 / DELETE 刪除 User (REST 風格)
     path('user/<str:username>/', views.rest_user),
 
+    path('api/', include(router.urls)),
 ]
